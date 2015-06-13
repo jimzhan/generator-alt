@@ -31,7 +31,7 @@ var Packages = {
 
 module.exports = yeoman.generators.Base.extend({
 
-  prompting: function () {
+  askForApp: function () {
     var done = this.async();
 
     // Have Yeoman greet the user.
@@ -44,29 +44,51 @@ module.exports = yeoman.generators.Base.extend({
 
     var root = this.destinationPath();
 
-    var prompts = [
-      {
-        name: 'app',
-        message: 'What\'s the name of the app?',
-        default: path.basename(root)
-      },
-      {
-        name: 'preprocessor',
-        message: 'How\'d you like to pre-process stylesheets? (Less|Sass)',
-        default: 'Sass'
-      }
-    ];
+    var prompts = [{
+      name: 'app',
+      message: 'What\'s the name of the app?',
+      default: path.basename(root)
+    }];
 
     this.prompt(prompts, function (props) {
       this.props = props;
       // To access props later use this.props.someOption;
       this.app = props.app;
+      done();
+    }.bind(this));
+  },
+
+  askForPreprocessor: function () {
+    var done = this.async();
+
+    var prompts = [{
+      type: 'list',
+      name: 'preprocessors',
+      message: 'How\'d you like to pre-process stylesheets?',
+      choices: [{
+        name: 'Sass',
+        value: 'sass'
+      }, {
+        name: 'Less',
+        value: 'less'
+      }],
+      default: 0
+    }];
+
+    this.prompt(prompts, function (answers) {
+      var preprocessors = answers.preprocessors;
+
+      function use(item) {
+        return preprocessors && preprocessors.indexOf(item) !== -1;
+      }
+
       // pre-processor for style sheets.
-      if (props.preprocessor.toLowerCase() === 'less') {
+      if (use('less')) {
         this.preprocessor = { name: 'less', ext: '/\.less$/' };
       } else {
         this.preprocessor = { name: 'sass', ext: '/\.scss$/' };
       }
+
       done();
     }.bind(this));
   },
