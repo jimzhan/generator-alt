@@ -58,6 +58,45 @@ module.exports = yeoman.generators.Base.extend({
     }.bind(this));
   },
 
+  askForLicense: function() {
+    var done = this.async();
+
+    var prompts = [{
+      type: 'list',
+      name: 'license',
+      message: 'Which license you\'d like to use?',
+      choices: [{
+        name: 'Apache License 2.0',
+        value: 'Apache-2.0'
+      }, {
+        name: 'BSD 2-clause "Simplified" License',
+        value: 'BSD-2-Clause'
+      }, {
+        name: 'Eclipse Public License 1.0',
+        value: 'EPL-1.0'
+      }, {
+        name: 'GNU General Public License v3.0',
+        value: 'GPL-3.0'
+      }, {
+        name: 'GNU Lesser General Public License v3.0',
+        valeu: 'LGPL-3.0'
+      }, {
+        name: 'MIT License',
+        value: 'MIT'
+      }, {
+        name: 'Mozilla Public License 2.0',
+        value: 'MPL-2.0'
+      }],
+      default: 0
+    }];
+
+    this.prompt(prompts, function (answers) {
+      this.license = answers.license;
+      done();
+    }.bind(this));
+
+  },
+
   askForPreprocessor: function () {
     var done = this.async();
 
@@ -76,10 +115,10 @@ module.exports = yeoman.generators.Base.extend({
     }];
 
     this.prompt(prompts, function (answers) {
-      var preprocessors = answers.preprocessors;
+      var preprocessor = answers.preprocessor;
 
       function use(item) {
-        return preprocessors && preprocessors.indexOf(item) !== -1;
+        return preprocessor && preprocessor.indexOf(item) !== -1;
       }
 
       // pre-processor for style sheets.
@@ -121,7 +160,10 @@ module.exports = yeoman.generators.Base.extend({
     this.fs.copyTpl(
       this.templatePath('package.json'),
       this.destinationPath('package.json'),
-      { app: this.app }
+      {
+        app: this.app,
+        license: this.license
+      }
     );
 
     this.fs.copy(
