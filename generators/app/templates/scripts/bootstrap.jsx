@@ -2,14 +2,15 @@ import 'es6-shim';
 import 'whatwg-fetch';
 
 import React from 'react';
-import router from './shared/router';
+import Router from 'react-router';
+import {main} from './views/routes';
 
 
 require('../assets/favicon.ico');
 
 
 document.addEventListener('DOMContentLoaded', function(){
-  router.run((Handler, state) => {
+  Router.run(main, (Handler, state) => {
     React.render(<Handler {...state} />, document.body);
   });
 });
