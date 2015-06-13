@@ -31,6 +31,8 @@ module.exports = yeoman.generators.Base.extend({
 
   writing: function () {
     if (this.className) {
+      this.conflicter.force = true;
+
       // create the action itself
       this.fs.copyTpl(
         this.templatePath('Actions.js'),

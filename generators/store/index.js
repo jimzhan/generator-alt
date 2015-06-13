@@ -30,8 +30,9 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   writing: function () {
-
     if (this.className) {
+      this.conflicter.force = true;
+
       // create the store itself
       this.fs.copyTpl(
         this.templatePath('Store.js'),
