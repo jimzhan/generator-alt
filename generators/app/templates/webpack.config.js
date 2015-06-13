@@ -54,6 +54,10 @@ module.exports = {
         loader: 'style!css!autoprefixer'
       },
       {
+        test: <%= preprocessor.ext %>,
+        loader: 'style!css!autoprefixer!<%= preprocessor.name %>'
+      },
+      {
         test: /\.jsx?$/,
         loader: 'react-hot!babel?stage=0',
         exclude: [/node_modules/]
