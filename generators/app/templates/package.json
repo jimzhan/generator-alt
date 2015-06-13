@@ -1,0 +1,12 @@
+{
+  "name": "<%= app %>",
+  "version": "0.1.0",
+  "scripts": {
+    "build": "webpack --progress --colors",
+    "start": "webpack-dev-server --content-base build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "description": "React biolerplate backed by webpack",
+  "dependencies": {}
+}
+

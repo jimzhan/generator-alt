@@ -2,6 +2,8 @@
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
+var path  = require('path');
+
 
 module.exports = yeoman.generators.Base.extend({
   prompting: function () {
@@ -9,19 +11,23 @@ module.exports = yeoman.generators.Base.extend({
 
     // Have Yeoman greet the user.
     this.log(yosay(
-      'Welcome to the cat\'s meow ' + chalk.red('Alt') + ' generator!'
+      'Welcome to ' + chalk.red('React.js')
     ));
 
-    var prompts = [{
-      type: 'confirm',
-      name: 'someOption',
-      message: 'Would you like to enable this option?',
-      default: true
-    }];
+    var root = this.destinationPath();
+
+    var prompts = [
+      {
+        name: 'app',
+        message: 'What\'s the name of the app?',
+        default: path.basename(root)
+      }
+    ];
 
     this.prompt(prompts, function (props) {
       this.props = props;
       // To access props later use this.props.someOption;
+      this.app = props.app;
 
       done();
     }.bind(this));
@@ -30,12 +36,29 @@ module.exports = yeoman.generators.Base.extend({
   writing: {
     app: function () {
       this.fs.copy(
-        this.templatePath('_package.json'),
-        this.destinationPath('package.json')
+        this.templatePath('index.html'),
+        this.destinationPath('index.html')
       );
+
       this.fs.copy(
-        this.templatePath('_bower.json'),
-        this.destinationPath('bower.json')
+        this.templatePath('assets'),
+        this.destinationPath('assets')
+      );
+
+      this.fs.copy(
+        this.templatePath('scripts'),
+        this.destinationPath('scripts')
+      );
+
+      this.fs.copy(
+        this.templatePath('webpack.config.js'),
+        this.destinationPath('webpack.config.js')
+      );
+
+      this.fs.copyTpl(
+        this.templatePath('package.json'),
+        this.destinationPath('package.json'),
+        { app: this.app }
       );
     },
 
@@ -44,14 +67,35 @@ module.exports = yeoman.generators.Base.extend({
         this.templatePath('editorconfig'),
         this.destinationPath('.editorconfig')
       );
-      this.fs.copy(
-        this.templatePath('jshintrc'),
-        this.destinationPath('.jshintrc')
-      );
     }
   },
 
   install: function () {
-    this.installDependencies();
+    this.npmInstall([
+      'alt',
+      'debug',
+      'es6-shim',
+      'react',
+      'react-router',
+      'whatwg-fetch'
+    ], {
+      'save': true
+    });
+
+    this.npmInstall([
+      'autoprefixer-loader',
+      'babel-core',
+      'babel-loader',
+      'css-loader',
+      'file-loader',
+      'html-webpack-plugin',
+      'node-libs-browser',
+      'react-hot-loader',
+      'style-loader',
+      'webpack',
+      'webpack-dev-server'
+    ], {
+      'saveDev': true
+    });
   }
 });
