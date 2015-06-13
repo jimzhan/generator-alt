@@ -5,7 +5,7 @@ var path  = require('path');
 var _ = require('lodash');
 
 
-const Base = path.join('scripts', 'stores');
+const Base = path.join('scripts', 'views');
 
 
 module.exports = yeoman.generators.Base.extend({
@@ -23,7 +23,7 @@ module.exports = yeoman.generators.Base.extend({
     this.prompt(prompts, function (props) {
       this.props = props;
       if (props.className.length > 0) {
-        this.className = _.capitalize(_.camelCase(props.className.replace(/store$/i, ''))) + 'Store';
+        this.className = _.capitalize(_.camelCase(props.className));
       }
       done();
     }.bind(this));
@@ -34,7 +34,7 @@ module.exports = yeoman.generators.Base.extend({
       // create the store itself
       this.fs.copyTpl(
         this.templatePath('class.js'),
-        this.destinationPath(path.join(Base, this.className + '.js')),
+        this.destinationPath(path.join(Base, this.className + '.jsx')),
         { className: this.className }
       );
 

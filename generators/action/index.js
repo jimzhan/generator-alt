@@ -17,7 +17,7 @@ module.exports = yeoman.generators.Base.extend({
 
     var prompts = [{
       name: 'className',
-      message: 'Name?'
+      message: 'Name:'
     }];
 
     this.prompt(prompts, function (props) {
@@ -33,7 +33,7 @@ module.exports = yeoman.generators.Base.extend({
     if (this.className) {
       // create the action itself
       this.fs.copyTpl(
-        this.templatePath('Actions.js'),
+        this.templatePath('class.js'),
         this.destinationPath(path.join(Base, this.className + '.js')),
         { className: this.className }
       );
