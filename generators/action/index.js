@@ -31,8 +31,6 @@ module.exports = yeoman.generators.Base.extend({
 
   writing: function () {
     if (this.className) {
-      this.conflicter.force = true;
-
       // create the action itself
       this.fs.copyTpl(
         this.templatePath('Actions.js'),
@@ -48,6 +46,8 @@ module.exports = yeoman.generators.Base.extend({
         var content = this.read(index);
         var insert = 'module.exports = require(\'./' + this.className +  '\');';
         if (content.indexOf(insert) === -1) {
+          // get rid of the prompt.
+          this.conflicter.force = true;
           this.write(index, content.replace(content, content + '\n' + insert));
         }
 

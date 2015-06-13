@@ -31,8 +31,6 @@ module.exports = yeoman.generators.Base.extend({
 
   writing: function () {
     if (this.className) {
-      this.conflicter.force = true;
-
       // create the store itself
       this.fs.copyTpl(
         this.templatePath('Store.js'),
@@ -44,10 +42,11 @@ module.exports = yeoman.generators.Base.extend({
       var index = this.destinationPath(path.join(Base, 'index.js'));
 
       if (this.fs.exists(index)) {
-
         var content = this.read(index);
         var insert = 'module.exports = require(\'./' + this.className +  '\');';
         if (content.indexOf(insert) === -1) {
+          // get rid of the prompt.
+          this.conflicter.force = true;
           this.write(index, content.replace(content, content + '\n' + insert));
         }
 
