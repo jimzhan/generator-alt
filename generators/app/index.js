@@ -149,7 +149,7 @@ module.exports = yeoman.generators.Base.extend({
     this.fs.copyTpl(
       this.templatePath(path.join('scripts', 'bootstrap.jsx')),
       this.destinationPath(path.join('scripts', 'bootstrap.jsx')),
-      { preprocessor: this.preprocessor.name }
+      { preprocessor: (this.preprocessor.name === 'less') ? 'less' : 'scss' }
     );
   },
 
