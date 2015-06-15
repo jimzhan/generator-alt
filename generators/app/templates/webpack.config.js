@@ -13,6 +13,10 @@ module.exports = {
     './scripts/bootstrap.jsx'
   ],
 
+  externals: {
+    'jQuery': 'jQuery'
+  },
+
   output: {
     filename: '[name].js',
     chunkFilename: '[chunkhash].js',
