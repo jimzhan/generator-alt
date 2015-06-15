@@ -7,6 +7,7 @@ var path  = require('path');
 var Packages = {
   main:  [
     'alt',
+    'classnames',
     'debug',
     'es6-shim',
     'react',

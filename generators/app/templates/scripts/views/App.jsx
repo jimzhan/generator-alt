@@ -10,7 +10,9 @@ export default class App extends React.Component {
       <div>
         <Nav />
         <main>
-          <RouteHandler />
+          <div className="container">
+            <RouteHandler />
+          </div>
         </main>
       </div>
     );
