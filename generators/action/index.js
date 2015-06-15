@@ -1,8 +1,8 @@
 var yeoman = require('yeoman-generator');
-var chalk = require('chalk');
-var yosay = require('yosay');
-var path  = require('path');
-var _ = require('lodash');
+var chalk  = require('chalk');
+var yosay  = require('yosay');
+var path   = require('path');
+var _      = require('lodash');
 
 
 const Base = path.join('scripts', 'actions');
@@ -23,7 +23,9 @@ module.exports = yeoman.generators.Base.extend({
     this.prompt(prompts, function (props) {
       this.props = props;
       if (props.className.length > 0) {
-        this.className = _.capitalize(_.camelCase(props.className.replace(/actions?$/i, ''))) + 'Actions';
+        this.className = _.capitalize(
+          _.camelCase(props.className.replace(/actions?$/i, ''))
+        ) + 'Actions';
       }
       done();
     }.bind(this));

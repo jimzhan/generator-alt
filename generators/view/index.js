@@ -1,8 +1,8 @@
 var yeoman = require('yeoman-generator');
-var chalk = require('chalk');
-var yosay = require('yosay');
-var path  = require('path');
-var _ = require('lodash');
+var chalk  = require('chalk');
+var yosay  = require('yosay');
+var path   = require('path');
+var _      = require('lodash');
 
 
 const Base = path.join('scripts', 'views');
