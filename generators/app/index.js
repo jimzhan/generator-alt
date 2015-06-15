@@ -158,9 +158,10 @@ module.exports = yeoman.generators.Base.extend({
       this.templatePath(path.join('assets', 'favicon.ico')),
       this.destinationPath(path.join('assets', 'favicon.ico'))
     );
+    var ext = (this.preprocessor.name === 'less') ? 'less' : 'scss';
     this.fs.copy(
-      this.templatePath(path.join('assets', 'app.' + this.preprocessor.name)),
-      this.destinationPath(path.join('assets', 'app.' + this.preprocessor.name))
+      this.templatePath(path.join('assets', 'app.' + ext)),
+      this.destinationPath(path.join('assets', 'app.' + ext))
     );
   },
 
