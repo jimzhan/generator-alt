@@ -7,6 +7,7 @@ import {main} from './views/routes';
 
 
 require('../assets/favicon.ico');
+require('../assets/app.<%= preprocessor %>');
 
 
 document.addEventListener('DOMContentLoaded', function(){

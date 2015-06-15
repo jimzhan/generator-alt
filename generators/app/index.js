@@ -103,7 +103,7 @@ module.exports = yeoman.generators.Base.extend({
 
     var prompts = [{
       type: 'list',
-      name: 'preprocessors',
+      name: 'preprocessor',
       message: 'How\'d you like to pre-process stylesheets?',
       choices: [{
         name: 'Sass',
@@ -139,15 +139,28 @@ module.exports = yeoman.generators.Base.extend({
       this.destinationPath('index.html')
     );
     this.fs.copy(
-      this.templatePath('scripts'),
-      this.destinationPath('scripts')
+      this.templatePath(path.join('scripts', 'shared')),
+      this.destinationPath(path.join('scripts', 'shared'))
+    );
+    this.fs.copy(
+      this.templatePath(path.join('scripts', 'views')),
+      this.destinationPath(path.join('scripts', 'views'))
+    );
+    this.fs.copyTpl(
+      this.templatePath(path.join('scripts', 'bootstrap.jsx')),
+      this.destinationPath(path.join('scripts', 'bootstrap.jsx')),
+      { preprocessor: this.preprocessor.name }
     );
   },
 
   installAssets: function() {
     this.fs.copy(
-      this.templatePath('assets'),
-      this.destinationPath('assets')
+      this.templatePath(path.join('assets', 'favicon.ico')),
+      this.destinationPath(path.join('assets', 'favicon.ico'))
+    );
+    this.fs.copy(
+      this.templatePath(path.join('assets', 'app.' + this.preprocessor.name)),
+      this.destinationPath(path.join('assets', 'app.' + this.preprocessor.name))
     );
   },
 
@@ -175,6 +188,7 @@ module.exports = yeoman.generators.Base.extend({
 
   install: function () {
     if (this.preprocessor.name === 'less') {
+      Packages.dev.push('less');
       Packages.dev.push('less-loader');
     } else {
       Packages.dev.push('node-sass');
