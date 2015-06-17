@@ -6,15 +6,18 @@ import $ from 'jQuery';
 export default class Nav extends React.Component {
 
   componentDidMount() {
-    $('.button-collapse').sideNav();
+    $('.button-collapse').sideNav({closeOnClick: true});
   }
 
   render() {
     return (
-      <div className="navbar-fixed">
-        <nav className="grey darken-3" role="navigation">
-          <div className="nav-wrapper container">
-            <a id="logo-container" href="#" className="brand-logo">Logo</a>
+      <nav className="fixed-navbar">
+        <section>
+          <div className="nav-wrapper">
+            <a href="#!" className="brand-logo">Logo</a>
+            <a href="#" data-activates="mobile-demo" className="button-collapse">
+              <i className="mdi-navigation-menu"></i>
+            </a>
             <ul className="right hide-on-med-and-down">
               <li>
                 <Link to="home">Home</Link>
@@ -23,8 +26,7 @@ export default class Nav extends React.Component {
                 <Link to="about">About</Link>
               </li>
             </ul>
-
-            <ul id="nav-mobile" className="side-nav">
+            <ul className="side-nav" id="mobile-demo">
               <li>
                 <Link to="home">Home</Link>
               </li>
@@ -32,13 +34,9 @@ export default class Nav extends React.Component {
                 <Link to="about">About</Link>
               </li>
             </ul>
-
-            <a href="#" data-activates="nav-mobile" className="button-collapse">
-              <i className="mdi-navigation-menu"></i>
-            </a>
           </div>
-        </nav>
-      </div>
+        </section>
+      </nav>
     );
   }
 }

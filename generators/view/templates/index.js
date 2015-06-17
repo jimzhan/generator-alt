@@ -1,1 +1,1 @@
-module.exports = require('./<%= className %>');
+exports.<%= className %> = require('./<%= className %>');

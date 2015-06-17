@@ -43,7 +43,7 @@ module.exports = yeoman.generators.Base.extend({
 
       if (this.fs.exists(index)) {
         var content = this.read(index);
-        var insert = 'module.exports = require(\'./' + this.className +  '\');';
+        var insert = 'exports.' + this.className + ' = require(\'./' + this.className +  '\');';
         if (content.indexOf(insert) === -1) {
           // get rid of the prompt.
           this.conflicter.force = true;
