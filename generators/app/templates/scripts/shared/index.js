@@ -1,3 +1,3 @@
-module.exports = require('./flux');
+exports.flux = require('./flux');
 
-module.exports = require('./config');
+exports.config = require('./config');

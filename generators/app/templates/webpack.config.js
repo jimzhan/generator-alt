@@ -14,7 +14,7 @@ module.exports = {
   ],
 
   externals: {
-    'jQuery': 'jQuery'
+    '$': 'jQuery'
   },
 
   output: {

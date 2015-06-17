@@ -6,7 +6,7 @@
     "start": "webpack-dev-server --content-base build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "license": "<%= license %>",
+  "license": "Apache-2.0",
   "description": "React biolerplate backed by webpack",
   "dependencies": {}
 }
