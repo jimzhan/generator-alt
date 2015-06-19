@@ -50,7 +50,7 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.(svg|ico|eot|ttf|woff2?|pdf)$/,
+        test: /\.(svg|ico|eot|ttf|woff2?|pdf|png)$/,
         loader: 'file?name=[path][name].[ext]&context=assets'
       },
       {

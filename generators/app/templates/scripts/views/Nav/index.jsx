@@ -1,7 +1,10 @@
 import React from 'react';
 import classNames from 'classnames';
 import {Link} from 'react-router';
-import {config} from '../shared';
+import {config} from '../../shared';
+
+
+require('./styles.scss');
 
 
 export default class Nav extends React.Component {
@@ -14,7 +17,7 @@ export default class Nav extends React.Component {
     return (
       <nav className={classNames('fixed-navbar', config.theme)}>
         <div className="container nav-wrapper">
-          <a href="#!" className="brand-logo">Logo</a>
+          <a href="https://github.com/jimzhan/generator-alt" className="brand-logo"></a>
           <a href="#" data-activates="mobile-demo" className="button-collapse">
             <i className="mdi-navigation-menu"></i>
           </a>
