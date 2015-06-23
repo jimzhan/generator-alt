@@ -30,6 +30,13 @@ For more information on what `generator-alt` can do for you, take a look at the 
 
 - Add: `yo alt:store`
 
+### React Components
+
+- Add: `yo alt:view`
+
+
+Need server side supports in [Golang](http://www.golang.org)? Check [this](/goanywhere/rex) out :-)
+
 
 ## License
 
