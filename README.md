@@ -1,4 +1,4 @@
-# React Flu (Alt) Generator
+# React Flux (Alt) Generator
 
 [Yeoman](http://yeoman.io) generator that scaffolds out a React based front-end webapp.
 
