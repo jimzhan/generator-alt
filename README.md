@@ -35,7 +35,7 @@ For more information on what `generator-alt` can do for you, take a look at the 
 - Add: `yo alt:view`
 
 
-Need server side supports in [Golang](http://www.golang.org)? Check [this](/goanywhere/rex) out :-)
+Need server side supports in [Golang](http://www.golang.org)? Check [this](https://github.com/goanywhere/rex) out :-)
 
 
 ## License
