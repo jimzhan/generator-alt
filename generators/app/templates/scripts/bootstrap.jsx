@@ -1,7 +1,6 @@
 'use strict';
 
 import 'es6-shim';
-import 'whatwg-fetch';
 
 import React from 'react';
 import Router, {HistoryLocation} from 'react-router';
