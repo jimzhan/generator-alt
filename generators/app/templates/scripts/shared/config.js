@@ -1,4 +1,6 @@
-const config = {
+'use strict';
+
+var config = {
   theme: 'grey darken-3'
 };
 

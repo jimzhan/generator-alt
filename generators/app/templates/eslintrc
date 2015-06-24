@@ -5,7 +5,6 @@
     "node": true
   },
   "rules": {
-    "strict": 1,
     "key-spacing": [0, {"beforeColon": false, "afterColon", false}],
     "no-unused-vars": false,
     "no-multi-spaces": false,
