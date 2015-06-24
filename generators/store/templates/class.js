@@ -1,5 +1,4 @@
 'use strict';
-
 import {flux} from '../shared';
 
 
