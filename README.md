@@ -9,7 +9,6 @@
 * CSS Autoprefixing
 * Built-in preview server with LiveReload
 * Automagically compile Javascripts & (Less | Sass)
-* Mocha Unit Testing with PhantomJS
 
 For more information on what `generator-alt` can do for you, take a look at the [webpack](https://github.com/jimzhan/generator-alt/blob/master/app/templates/webpack.config.js) we use for bundling.
 
