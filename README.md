@@ -10,7 +10,7 @@
 * Built-in preview server with LiveReload
 * Automagically compile Javascripts & (Less | Sass)
 
-For more information on what `generator-alt` can do for you, take a look at the [webpack](https://github.com/jimzhan/generator-alt/blob/master/app/templates/webpack.config.js) we use for bundling.
+For more information on what `generator-alt` can do for you, take a look at the [webpack](https://raw.githubusercontent.com/jimzhan/generator-alt/master/generators/app/templates/webpack.config.js) we use for bundling.
 
 
 ## Getting Started
