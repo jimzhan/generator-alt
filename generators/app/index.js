@@ -95,6 +95,8 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   installApp: function() {
+    var extension = (this.preprocessor.name === 'less') ? 'less' : 'scss';
+
     this.fs.copy(
       this.templatePath('index.html'),
       this.destinationPath('index.html')
@@ -103,14 +105,58 @@ module.exports = yeoman.generators.Base.extend({
       this.templatePath(path.join('scripts', 'shared')),
       this.destinationPath(path.join('scripts', 'shared'))
     );
-    this.fs.copy(
-      this.templatePath(path.join('scripts', 'views')),
-      this.destinationPath(path.join('scripts', 'views'))
-    );
     this.fs.copyTpl(
       this.templatePath(path.join('scripts', 'bootstrap.jsx')),
       this.destinationPath(path.join('scripts', 'bootstrap.jsx')),
-      { preprocessor: (this.preprocessor.name === 'less') ? 'less' : 'scss' }
+      { preprocessor: extension }
+    );
+
+    // view template supports with preprocessor
+    this.fs.copy(
+      this.templatePath(path.join('scripts', 'views', 'About.jsx')),
+      this.destinationPath(path.join('scripts', 'views', 'About.jsx'))
+    );
+    this.fs.copy(
+      this.templatePath(path.join('scripts', 'views', 'App.jsx')),
+      this.destinationPath(path.join('scripts', 'views', 'App.jsx'))
+    );
+    this.fs.copy(
+      this.templatePath(path.join('scripts', 'views', 'Home.jsx')),
+      this.destinationPath(path.join('scripts', 'views', 'Home.jsx'))
+    );
+    this.fs.copy(
+      this.templatePath(path.join('scripts', 'views', 'routes.jsx')),
+      this.destinationPath(path.join('scripts', 'views', 'routes.jsx'))
+    );
+    /*** Banner ***/
+    this.fs.copyTpl(
+      this.templatePath(path.join('scripts', 'views', 'Banner', 'index.jsx')),
+      this.destinationPath(path.join('scripts', 'views', 'Banner', 'index.jsx')),
+      { preprocessor: extension }
+    );
+    this.fs.copy(
+      this.templatePath(path.join('scripts', 'views', 'Banner', 'styles')),
+      this.destinationPath(path.join('scripts', 'views', 'Banner', 'styles.' + extension))
+    );
+    /*** Nav ***/
+    this.fs.copyTpl(
+      this.templatePath(path.join('scripts', 'views', 'Nav', 'index.jsx')),
+      this.destinationPath(path.join('scripts', 'views', 'Nav', 'index.jsx')),
+      { preprocessor: extension }
+    );
+    this.fs.copy(
+      this.templatePath(path.join('scripts', 'views', 'Nav', 'styles')),
+      this.destinationPath(path.join('scripts', 'views', 'Nav', 'styles.' + extension))
+    );
+    /*** Status ***/
+    this.fs.copyTpl(
+      this.templatePath(path.join('scripts', 'views', 'Status', 'index.jsx')),
+      this.destinationPath(path.join('scripts', 'views', 'Status', 'index.jsx')),
+      { preprocessor: extension }
+    );
+    this.fs.copy(
+      this.templatePath(path.join('scripts', 'views', 'Status', 'styles')),
+      this.destinationPath(path.join('scripts', 'views', 'Status', 'styles.' + extension))
     );
   },
 

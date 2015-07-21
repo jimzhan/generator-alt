@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-require('./styles.scss');
+require('./styles.<%= preprocessor %>');
 
 
 export default class Banner extends React.Component {

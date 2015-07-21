@@ -4,7 +4,7 @@ import React from 'react';
 import classNames from 'classnames';
 import {config} from '../../shared';
 
-require('./styles.scss');
+require('./styles.<%= preprocessor %>');
 
 
 export default class Status extends React.Component {

@@ -6,7 +6,7 @@ import {Link} from 'react-router';
 import {config} from '../../shared';
 
 
-require('./styles.scss');
+require('./styles.<%= preprocessor %>');
 
 
 export default class Nav extends React.Component {
